@@ -21,11 +21,11 @@
 use geogebra\pci\scripts\install\RegisterPciTextReader;
 
 return array(
-    'name' => 'pciSamples',
-	'label' => 'QTI PCI samples',
+    'name' => 'geogebra',
+	'label' => 'GeoGebra Exercise',
 	'description' => '',
     'license' => 'GPL-2.0',
-    'version' => '2.0.1',
+    'version' => '2.0.2',
 	'author' => 'International GeoGebra Institute',
 	'requires' => array(
 	    'qtiItemPci' => '>=1.1.0',
