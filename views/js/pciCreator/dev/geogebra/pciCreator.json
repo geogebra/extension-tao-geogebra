@@ -1,0 +1,45 @@
+{
+    "typeIdentifier": "geogebra",
+    "label": "GeoGebra Exercise",
+    "short": "GeoGebra",
+    "description": "GeoGebra Exercise.",
+    "version": "0.2.30",
+    "author": "International GeoGebra Institute",
+    "email": "support@geogebra.org",
+    "icon": "./creator/img/icon.svg",
+    "tags": [
+        "math",
+        "geogebra"
+    ],
+    "response": {
+        "baseType": "integer",
+        "cardinality": "single"
+    },
+    "runtime" : {
+        "hook" : "./runtime/geogebra.amd.js",
+        "libraries" : [
+            "IMSGlobal/jquery_2_1_1",
+            "./runtime/js/deployggb.js",
+            "./runtime/js/renderer.js"
+        ],
+        "stylesheets" : [
+            "./runtime/css/base.css",
+            "./runtime/css/geogebra.css"
+        ],
+        "mediaFiles" : [
+            "./runtime/assets/ThumbDown.png",
+            "./runtime/assets/ThumbUp.png"
+        ]
+    },
+    "creator" : {
+        "icon": "./creator/img/icon.svg",
+        "hook": "./pciCreator.js",
+        "libraries" : [
+            "./creator/tpl/markup.tpl",
+            "./creator/tpl/propertiesForm.tpl",
+            "./creator/widget/Widget.js",
+            "./creator/widget/states/Question.js",
+            "./creator/widget/states/states.js"
+        ]
+    }
+}
