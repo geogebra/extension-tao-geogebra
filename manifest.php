@@ -25,7 +25,7 @@ return array(
 	'label' => 'GeoGebra Exercise',
 	'description' => '',
     'license' => 'GPL-2.0',
-    'version' => '2.0.2',
+    'version' => '2.0.3',
 	'author' => 'International GeoGebra Institute',
 	'requires' => array(
 	    'qtiItemPci' => '>=1.1.0',
@@ -37,25 +37,25 @@ return array(
     ),
     'install' => array(
         'php'	=> array(
-			RegisterPciTextReader::class
+			RegisterGeoGebra::class
 		)
     ),
-    'update' => 'geogebra\\geogebra\\scripts\\update\\Updater',
+    'update' => 'geogebra\\pci\\scripts\\update\\Updater',
     'uninstall' => array(
     ),
     'autoload' => array (
         'psr-4' => array(
-            'geogebra\\geogebra\\' => dirname(__FILE__).DIRECTORY_SEPARATOR
+            'geogebra\\pci\\' => dirname(__FILE__).DIRECTORY_SEPARATOR
         )
     ),
     'routes' => array(
-        '/geogebra' => 'geogebra\\geogebra\\controller'
+        '/geogebra' => 'geogebra\\pci\\controller'
     ),
 	'constants' => array(
 	    # views directory
 	    "DIR_VIEWS" => dirname(__FILE__).DIRECTORY_SEPARATOR."views".DIRECTORY_SEPARATOR,
 
 		#BASE URL (usually the domain root)
-		'BASE_URL' => ROOT_URL.'pciSamples/',
+		'BASE_URL' => ROOT_URL.'geogebra/',
 	)
 );
