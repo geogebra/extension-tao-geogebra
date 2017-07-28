@@ -10,14 +10,19 @@
     ],
     "keywords" : [
         "tao",
-        "computer-based-assessment"
+        "computer-based-assessment",
+        "math",
+        "geogebra"
     ],
     "homepage" : "http://www.taotesting.com",
     "license" : [
         "GPL-2.0"
     ],
     "extra" : {
-        "tao-extension-name" : "geogebra"
+        "tao-extension-name" : "geogebra",
+        "branch-alias": {
+            "dev-master": "6.0-dev"
+        }
     },
     "minimum-stability" : "dev",
     "require": {
@@ -26,11 +31,6 @@
     "autoload" : {
         "psr-4" : {
             "geogebra\\pci\\" : ""
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "6.0-dev"
         }
     }
 }
