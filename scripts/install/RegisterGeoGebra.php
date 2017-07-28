@@ -25,6 +25,7 @@ use oat\taoQtiItem\model\portableElement\action\RegisterPortableElement;
 class RegisterGeoGebra extends RegisterPortableElement
 {
     protected function getSourceDirectory(){
+echo "wheee";
         $viewDir = \common_ext_ExtensionsManager::singleton()->getExtensionById('geogebra')->getConstant('DIR_VIEWS');
         return $viewDir.implode(DIRECTORY_SEPARATOR, ['js', 'pciCreator', 'dev', 'geogebra']);
     }

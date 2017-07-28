@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -18,26 +19,24 @@
  *
  *
  */
-
 namespace geogebra\pci\scripts\update;
 
 use geogebra\pci\scripts\install\RegisterGeoGebra;
 use oat\taoQtiItem\model\HookRegistry;
 
-class Updater extends \common_ext_ExtensionUpdater
-{
-
+class Updater extends \common_ext_ExtensionUpdater {
+    
     /**
      *
-     * @param string $currentVersion
+     * @param string $currentVersion            
      * @return string $versionUpdatedTo
      */
-    public function update($initialVersion) 
-    {
-
-        if ($this->isBetween('0', '0.0.1')) {
-            $this->setVersion('0.0.1');
+    public function update($initialVersion) {
+        if ($this->isBetween ( '0', '6.0.0' )) {
+            call_user_func ( new RegisterGeoGebra (), [ 
+                    '0.2.30' 
+            ] );
         }
-
+        $this->setVersion ( '6.0.0' );
     }
 }
