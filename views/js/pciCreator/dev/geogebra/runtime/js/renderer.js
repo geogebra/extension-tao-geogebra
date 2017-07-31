@@ -2,10 +2,10 @@ define(['IMSGlobal/jquery_2_1_1', 'OAT/util/html','geogebra/runtime/js/deployggb
     var exercise = this;
     return {
         render : function(id, container, config, assetManager){
-            console.log(config);
+            console.log(container);
             var $container = $(container);
-            
-            $container.append($('<div id="applet_container'+id+'"></div>'));
+            var qid = $container.parent().data("serial");
+            $container.append($('<div id="applet_container'+qid+'"></div>'));
 
             var parameters = {"showLogging":true,"id":"ggbApplet6629832","width":config.width,"height":config.height,"showToolBar":true,
                     "showMenuBar":false,"showAlgebraInput":true,"allowStyleBar":false,"showResetIcon":true,
@@ -17,7 +17,7 @@ define(['IMSGlobal/jquery_2_1_1', 'OAT/util/html','geogebra/runtime/js/deployggb
             
             exercise.applet = new deploy('5.0', parameters, {"is3D":1});
             applet.setHTML5Codebase({"requirejs":"geogebra/runtime/js/"});
-            applet.inject('applet_container'+id);
+            applet.inject('applet_container'+qid);
 
         },
         resize: function(id, container, config, manager){
