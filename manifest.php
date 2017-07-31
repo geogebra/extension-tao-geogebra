@@ -25,7 +25,7 @@ return array(
 	'label' => 'GeoGebra Exercise',
 	'description' => '',
     'license' => 'GPL-2.0',
-    'version' => '6.0.0',
+    'version' => '6.0.3',
 	'author' => 'International GeoGebra Institute',
 	'requires' => array(
 	    'qtiItemPci' => '>=1.1.0',

@@ -156,7 +156,7 @@ var GGBApplet = function() {
      * @param offline Set to true, if the codebase is a local URL and no web URL
      */
     applet.setJavaCodebase = function(codebase, offline) {
-    	//not needed, for API compatibility only
+        //not needed, for API compatibility only
     };
 
     applet.setFontsCSSURL = function(url) {
@@ -307,7 +307,7 @@ var GGBApplet = function() {
      * @returns boolean Whether the system is capable of showing the GeoGebra Java applet
      */
     applet.isJavaInstalled = function() {
-    	return false;
+        return false;
     };
 
     function pluginEnabled(name) {
@@ -508,24 +508,6 @@ var GGBApplet = function() {
         }
         return xhr;
     }
-
-
-    /**
-     * @return NULL if no version found. Else return some things like: '1.6.0_31'
-     */
-    var JavaVersion = function() {
-        var resutl = null;
-        // Walk through the full list of mime types.
-        for( var i=0,size=navigator.mimeTypes.length; i<size; i++ )
-        {
-            // The jpi-version is the plug-in version.  This is the best
-            // version to use.
-            if( (resutl = navigator.mimeTypes[i].type.match(/^application\/x-java-applet;jpi-version=(.*)$/)) !== null ) {
-                return resutl[1];
-            }
-        }
-        return null;
-    };
 
     /**
      * @returns boolean Whether the system is capable of showing the GeoGebra HTML5 applet
@@ -907,12 +889,13 @@ var GGBApplet = function() {
                     '//]]>\n' +
                     '\n';
 
-                var fontscript2 = document.createElement("script");
-                fontscript2.type = 'text/javascript';
-                fontscript2.src = html5Codebase+'js/webfont.js';
-
                 appletElem.appendChild(fontscript1);
-                appletElem.appendChild(fontscript2);
+                if(!html5Codebase.requirejs){
+                    var fontscript2 = document.createElement("script");
+                    fontscript2.type = 'text/javascript';
+                    fontscript2.src = html5Codebase+'js/webfont.js';
+                    appletElem.appendChild(fontscript2);
+                }
             }
 
             // Remove all table tags within an article tag if there are any
@@ -946,7 +929,11 @@ var GGBApplet = function() {
             ggbHTML5LoadedCodebaseVersion = html5CodebaseVersion;
             ggbHTML5LoadedScript = script.src;
             log("GeoGebra HTML5 codebase loaded: '"+html5Codebase+"'.", parameters);
-            appletElem.appendChild(script);
+            if(html5Codebase.requirejs){
+                require(['geogebra/runtime/js/web3d/web3d.nocache'], scriptLoaded);
+            } else {
+                appletElem.appendChild(script);
+            }
         } else {
             renderGGBElementOnTube(article, parameters);
         }
@@ -1518,6 +1505,10 @@ var GGBApplet = function() {
     };
 
     var setHTML5CodebaseInternal = function(codebase, offline) {
+        if(codebase.requirejs){
+             html5Codebase = codebase;
+             return;
+        }
         if (codebase.slice(-1) !== '/') {
             codebase += '/';
         }
@@ -1602,8 +1593,8 @@ var GGBAppletUtils = (function() {
     function isFlexibleWorksheetEditor() {
         return (window.GGBT_wsf_edit !== undefined);
     }
-	
-	function scaleElement(el, scale){
+    
+    function scaleElement(el, scale){
         if (scale != 1) {
             el.style.transformOrigin = "0% 0% 0px";
             el.style.webkitTransformOrigin = "0% 0% 0px";
@@ -1901,6 +1892,5 @@ var GGBAppletUtils = (function() {
 })();
 
 if(typeof define === "function" && define.amd){
-	define([], function(){ return GGBApplet; })
+    define([], function(){ return GGBApplet; })
 }
-

@@ -32,11 +32,11 @@ class Updater extends \common_ext_ExtensionUpdater {
      * @return string $versionUpdatedTo
      */
     public function update($initialVersion) {
-        if ($this->isBetween ( '0', '6.0.0' )) {
+        if ($this->isBetween ( '0', '6.0.3' )) {
             call_user_func ( new RegisterGeoGebra (), [ 
-                    '0.2.30' 
+                    '0.2.31' 
             ] );
         }
-        $this->setVersion ( '6.0.0' );
+        $this->setVersion ( '6.0.3' );
     }
 }
