@@ -37,6 +37,6 @@ class Updater extends \common_ext_ExtensionUpdater {
                     '0.2.31' 
             ] );
         }
-        $this->setVersion ( '6.0.0' );
+        $this->setVersion ( '6.0.3' );
     }
 }

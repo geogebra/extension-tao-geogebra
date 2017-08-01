@@ -14,7 +14,6 @@ define([
         var $container = this.widget.$container,
             $prompt = $container.find('.prompt'),
             interaction = this.widget.element;
-
         containerEditor.create($prompt, {
             change : function(text){
                 interaction.data('prompt', text);
@@ -43,7 +42,8 @@ define([
     });
 
     GeoGebraStateQuestion.prototype.initForm = function(){
-
+		var qid = this.widget.$container.find(".qti-customInteraction").data("serial");
+		console.log(qid);
         var _widget = this.widget,
             $form = _widget.$form,
             interaction = _widget.element,
@@ -61,7 +61,12 @@ define([
             "height": height,
             identifier : interaction.attr('responseIdentifier')
         }));
-
+		window["ggbApplet"+qid].showMenuBar(true);
+		window["ggbApplet"+qid].registerStoreUndoListener(function(){
+			window["ggbApplet"+qid].getBase64(function(base64){
+				interaction.prop('base64', base64);
+			});
+		});
         //init form javascript
         formElement.initWidget($form);
 
