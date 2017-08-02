@@ -24,6 +24,10 @@ define([
             related : interaction
         });
 
+        var responseDeclaration = interaction.getResponseDeclaration();
+        responseDeclaration.setCorrect([1]);
+
+
         simpleEditor.create($container, '.geogebra-width', function(text){
             interaction.prop('width', text);
         });
@@ -43,7 +47,7 @@ define([
 
     GeoGebraStateQuestion.prototype.initForm = function(){
 		var qid = this.widget.$container.find(".qti-customInteraction").data("serial");
-		console.log(qid);
+
         var _widget = this.widget,
             $form = _widget.$form,
             interaction = _widget.element,

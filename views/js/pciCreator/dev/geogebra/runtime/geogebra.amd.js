@@ -60,8 +60,8 @@ define(['qtiCustomInteractionContext', 'IMSGlobal/jquery_2_1_1', 'geogebra/runti
 			var fraction = _this.applet.getAppletObject().getExerciseFraction();
 			var base64 = _this.applet.getAppletObject().getBase64();
 			
-            return {"record":[{"name":"ggb", "base" : {"file" : {"data":base64,"mime":"text/plain"} } }]};
-	//		return {"base": {         "float": fraction}} 
+        //    return {"record":[{"name":"ggb", "base" : {"file" : {"data":base64,"mime":"text/plain"} } }]};
+		return {"base": {"float": fraction}} 
 
         
         },

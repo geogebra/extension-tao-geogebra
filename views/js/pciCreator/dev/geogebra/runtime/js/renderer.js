@@ -7,9 +7,9 @@ define(['IMSGlobal/jquery_2_1_1', 'OAT/util/html','geogebra/runtime/js/deployggb
             var qid = $container.parent().data("serial");
             $container.append($('<div id="applet_container'+qid+'"></div>'));
 			console.log(config);
-            var parameters = {"showLogging":true,"id":"ggbApplet"+qid,"width":config.width,"height":config.height,"showToolBar":true,
+            var parameters = {"showLogging":true,"id":"ggbApplet"+qid,"width":config.width,"height":config.height,"showToolBar":false,
 					"ggbBase64": config.base64 || "",
-                    "showMenuBar":false,"showAlgebraInput":true,"allowStyleBar":false,"showResetIcon":true,
+                    "showMenuBar":false,"showAlgebraInput":false,"allowStyleBar":false,"showResetIcon":true,
                     "enableLabelDrags":false,"enableShiftDragZoom":true,"enableRightClick":false,"showToolBarHelp":false,
                     "errorDialogsActive":true,"useBrowserForJS":false,
                     "language":"en","isPreloader":false,"screenshotGenerator":false,"preventFocus":true,

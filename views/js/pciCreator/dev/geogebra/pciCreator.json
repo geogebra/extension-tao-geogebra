@@ -12,7 +12,8 @@
         "geogebra"
     ],
     "response": {
-        "cardinality": "record"
+        "cardinality": "single",
+		"baseType": "float"
     },
     "runtime" : {
         "hook" : "./runtime/geogebra.amd.js",
@@ -20,13 +21,13 @@
             "IMSGlobal/jquery_2_1_1",
             "./runtime/js/deployggb.js",			
             "./runtime/js/renderer.js",
-			"./runtime/js/web3d/4F9F8C8057D9225A27A94FFCEC209EF2.cache.js",
+			"./runtime/js/web3d/CD7553D4BC3D1261E5F06A579B0D27C3.cache.js",
   "./runtime/js/web3d/68999323A9AE008195A76987E995D389.cache.png",
   "./runtime/js/web3d/clear.cache.gif",
-  "./runtime/js/web3d/deferredjs/4F9F8C8057D9225A27A94FFCEC209EF2/1.cache.js",
-  "./runtime/js/web3d/deferredjs/4F9F8C8057D9225A27A94FFCEC209EF2/2.cache.js",
-  "./runtime/js/web3d/deferredjs/4F9F8C8057D9225A27A94FFCEC209EF2/3.cache.js",
-  "./runtime/js/web3d/deferredjs/4F9F8C8057D9225A27A94FFCEC209EF2/4.cache.js",
+  "./runtime/js/web3d/deferredjs/CD7553D4BC3D1261E5F06A579B0D27C3/1.cache.js",
+  "./runtime/js/web3d/deferredjs/CD7553D4BC3D1261E5F06A579B0D27C3/2.cache.js",
+  "./runtime/js/web3d/deferredjs/CD7553D4BC3D1261E5F06A579B0D27C3/3.cache.js",
+  "./runtime/js/web3d/deferredjs/CD7553D4BC3D1261E5F06A579B0D27C3/4.cache.js",
   "./runtime/js/web3d/font/GeogebraSans-Regular.ttf",
   "./runtime/js/web3d/font/GeogebraSerif-Regular.ttf",
   "./runtime/js/web3d/font/cyrillic/fonts/jlm_wnbx10.js",
