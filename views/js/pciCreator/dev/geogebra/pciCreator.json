@@ -12,8 +12,7 @@
         "geogebra"
     ],
     "response": {
-        "baseType": "integer",
-        "cardinality": "single"
+        "cardinality": "record"
     },
     "runtime" : {
         "hook" : "./runtime/geogebra.amd.js",

@@ -22,7 +22,7 @@ define(['qtiCustomInteractionContext', 'IMSGlobal/jquery_2_1_1', 'geogebra/runti
             this.dom = dom;
             this.config = config || {width: 600, height:450};
 
-            renderer.render(this.id, this.dom, this.config, assetManager);
+            _this.applet = renderer.render(this.id, this.dom, this.config, assetManager);
 
             //tell the rendering engine that I am ready
             qtiCustomInteractionContext.notifyReady(this);
@@ -35,7 +35,7 @@ define(['qtiCustomInteractionContext', 'IMSGlobal/jquery_2_1_1', 'geogebra/runti
                 if(height > 100){
                     _this.config.height = height;
                 }
-                renderer.resize(_this.id, _this.dom, _this.config);
+                renderer.resize(_this.applet, _this.config);
             });
         },
         /**
@@ -46,11 +46,7 @@ define(['qtiCustomInteractionContext', 'IMSGlobal/jquery_2_1_1', 'geogebra/runti
          * @param {Object} response
          */
         setResponse : function(response){
-
-            var $container = $(this.dom),
-                value = response && response.base ? parseInt(response.base.integer) : -1;
-
-            $container.find('input[value="' + value + '"]').prop('checked', true);
+			//TODO
         },
         /**
          * Get the response in the json format described in
@@ -60,11 +56,14 @@ define(['qtiCustomInteractionContext', 'IMSGlobal/jquery_2_1_1', 'geogebra/runti
          * @returns {Object}
          */
         getResponse : function(){
+			var _this = this;
+			var fraction = _this.applet.getAppletObject().getExerciseFraction();
+			var base64 = _this.applet.getAppletObject().getBase64();
+			
+            return {"record":[{"name":"ggb", "base" : {"file" : {"data":base64,"mime":"text/plain"} } }]};
+	//		return {"base": {         "float": fraction}} 
 
-            var $container = $(this.dom),
-                value = parseInt($container.find('input:checked').val()) || 0;
-
-            return {base : {integer : value}};
+        
         },
         /**
          * Remove the current response set in the interaction
@@ -97,7 +96,9 @@ define(['qtiCustomInteractionContext', 'IMSGlobal/jquery_2_1_1', 'geogebra/runti
          * @param {Object} serializedState - json format
          */
         setSerializedState : function(state){
-
+			console.log(state);
+			//var qid = $(this.dom).parent().data("serial");
+			//renderer.setBase64(qid, state.base64);
         },
         /**
          * Get the current state of the interaction as a string.
@@ -107,8 +108,12 @@ define(['qtiCustomInteractionContext', 'IMSGlobal/jquery_2_1_1', 'geogebra/runti
          * @returns {Object} json format
          */
         getSerializedState : function(){
-
-            return {};
+			var _this = this;
+			var state = {};
+			if(_this.applet.getAppletObject()){
+				state = {"base64": _this.applet.getAppletObject().getBase64()};
+			}
+			return JSON.stringify(state);
         }
     };
 
